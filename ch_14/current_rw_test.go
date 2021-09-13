@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"testing"
+	"time"
 )
 
 type person struct {
@@ -79,5 +80,12 @@ func TestPersonSalary(t *testing.T) {
 	fmt.Println(p)
 }
 
-func TestNPE(t *testing.T) {
+func TestForEach(t *testing.T) {
+	for i := 0; i < 10; i++ {
+		fmt.Printf("out add is %x \n", &i)
+		go func() {
+			fmt.Printf("in address is %x \n", &i)
+		}()
+	}
+	time.Sleep(1e9)
 }
